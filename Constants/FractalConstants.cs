@@ -16,10 +16,10 @@ public static class FractalConstants
             Ymin = -1.75M,
         };
 
-        public static readonly ImageBox DefaultMandelbrotImageBox = new ImageBox((1920, 1080), DefaultGeneratingBox);
-
+        public static readonly ImageBox DefaultMandelbrotImageBox = new ImageBox(FullHD, DefaultGeneratingBox);
         public static double DefaultThreshold = 2.0;
     }
 
+    public static (int Nx, int Ny) FullHD = (1920, 1080);
     public static readonly int MaxIteration = 300;
 }
