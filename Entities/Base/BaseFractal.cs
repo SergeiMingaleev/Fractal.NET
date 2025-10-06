@@ -2,6 +2,7 @@
 using Fractal.NET.Constants;
 using Fractal.NET.ValueObjects;
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Fractal.NET.Entities.Base;
@@ -12,47 +13,54 @@ namespace Fractal.NET.Entities.Base;
 /// </summary>
 public abstract class BaseFractal : IFractal
 {
-    private int MaxIterationCount { get; set; }
     protected double Threshold { get; set; } = FractalConstants.MandelbrotConstants.DefaultThreshold;
-    protected Box2D DefaultGeneratingBox { get; set; } = FractalConstants.MandelbrotConstants.DefaultGeneratingBox;
-    protected IColorMap DefaultColorMap { get; set; }
+    protected ImageBox DefaultGeneratingBox { get; set; } = FractalConstants.MandelbrotConstants.DefaultMandelbrotImageBox;
     protected virtual Func<Complex, Complex, Complex> Z() =>
         (z0, c) => z0 * z0 + c;
 
-    public BaseFractal(int maxIterationCount) => MaxIterationCount = maxIterationCount;
-    public FractalData Generate(Box2D? box, IColorMap? map) 
+    public FractalData Generate(ImageBox? box, int? maxIterations) 
     {
+        var maxIter = maxIterations ?? FractalConstants.MaxIteration;
+        var imageBox = box ?? DefaultGeneratingBox;
+        Box2D computingBox = imageBox.Box;
+        var z0 = new Complex(0,0);
+        var z = z0;
 
-        throw new NotImplementedException();
-        //var computingBox = box ?? DefaultGeneratingBox;
-        //var colorMap = map ?? DefaultColorMap;
+        int xSize = imageBox.Screen.Nx;
+        var xStep = (computingBox.Xmax - computingBox.Xmin) / (xSize - 1);
 
-        //double xStep = (computingBox.Xmax - computingBox.Xmin) / (size - 1);
-        //double yStep = (yMax - yMin) / (size - 1);
-        //var z = z0;
-        //double[,] scales = new double[size, size];
+        int ySize = imageBox.Screen.Ny;
+        var yStep = (computingBox.Ymax - computingBox.Ymin) / (ySize - 1);
 
-        //for (int yIndex = 0; yIndex < size; yIndex++)
-        //{
-        //    double y = yMax - yIndex * yStep;
+        var counts = new List<List<int>>(ySize);
 
-        //    for (int xIndex = 0; xIndex < size; xIndex++)
-        //    {
-        //        double x = xMin + xIndex * xStep;
-        //        var c = new Complex(x, y);
+        for (int yIndex = 0; yIndex < ySize; yIndex++)
+        {
+            var y = computingBox.Ymax - yIndex * yStep;
 
-        //        for (var i = 0; i < iterationNumber; i++)
-        //        {
-        //            if (z.Magnitude > threshold)
-        //            {
-        //                scales[xIndex, yIndex] = i;
-        //            }
+            for (int xIndex = 0; xIndex < xSize; xIndex++)
+            {
+                var x = computingBox.Xmin + xIndex * xStep;
+                var c = new Complex((double)x, (double)y);
 
-        //            z = z.Square() + c;
-        //        }
+                for (var i = 0; i < maxIter; i++)
+                {
+                    if (z.Magnitude > FractalConstants.MandelbrotConstants.DefaultThreshold)
+                    {
+                        counts[xIndex].Add(i);
+                    }
 
-        //        z = z0;
-        //    }
-        //}
+                    z = Z().Invoke(z,c);
+                }
+
+                z = z0;
+            }
+        }
+
+        return new FractalData()
+        {
+            MaxIteration = maxIter,
+            Counts = counts,
+        };
     }
 }
