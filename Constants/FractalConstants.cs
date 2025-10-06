@@ -1,4 +1,5 @@
-﻿using Fractal.NET.ValueObjects;
+﻿using Fractal.NET.Entities;
+using Fractal.NET.ValueObjects;
 
 namespace Fractal.NET.Constants;
 
@@ -15,6 +16,10 @@ public static class FractalConstants
             Ymin = -1.75M,
         };
 
+        public static readonly ImageBox DefaultMandelbrotImageBox = new ImageBox((1920, 1080), DefaultGeneratingBox);
+
         public static double DefaultThreshold = 2.0;
     }
+
+    public static readonly int MaxIteration = 300;
 }

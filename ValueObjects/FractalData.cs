@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 
 namespace Fractal.NET.ValueObjects;
 
@@ -8,6 +7,6 @@ namespace Fractal.NET.ValueObjects;
 /// </summary>
 public struct FractalData
 {
-    public Box2D Box { get; init; }
-    public List<List<Color>> ColoredCounts { get; init; }
+    public int MaxIteration { get; set; }
+    public List<List<int>> Counts { get; init; }
 }
