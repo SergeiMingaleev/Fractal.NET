@@ -1,4 +1,6 @@
 ﻿namespace Fractal;
+
+using Fractal.NET.ValueObjects;
 using System;
 
 /// <summary>
@@ -6,7 +8,7 @@ using System;
 /// </summary>
 internal class ImageColorMap
 {
-    internal static ImagePixels process(ImageCounts iCounts)
+    internal static ImagePixels process(FractalData iCounts)
     {
         Console.WriteLine($"Конвертировал counts в pixels.");
         ImagePixels iPixels = new();

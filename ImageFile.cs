@@ -1,4 +1,4 @@
-﻿namespace Fractal;
+﻿namespace Fractal.NET;
 using System;
 
 /// <summary>

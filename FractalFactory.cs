@@ -1,5 +1,7 @@
-﻿using System;
-using System.Reflection;
+﻿using Fractal.NET;
+using Fractal.NET.Entities;
+using Fractal.NET.Entities.Fractals;
+using Fractal.NET.ValueObjects;
 namespace Fractal;
 
 /// <summary>
@@ -23,10 +25,10 @@ internal class FractalFactory
         FractalMandelbrot fractal = new();
 
         // Создадим бокс картинки для 2D бокса фрактала по умолчанию:
-        ImageBox iBox = new(screen, fractal.box);
+        //ImageBox iBox = new(screen, fractal.box);
 
         // Посчитаем фрактал для всех точек бокса картинки:
-        ImageCounts iCounts = fractal.calc(iBox, countMax);
+        //FractalData iCounts = fractal.calc(iBox, countMax);
 
         // Пересчитаем counts в цвета картинки:
         // TODO: обсудить концепт colormaps и переименовать этот класс в соответствии.
@@ -34,11 +36,16 @@ internal class FractalFactory
         //ImagePixels iPixels = iColormap.process(iCounts);
 
         // Или пока просто вызовем статический метод?:
-        ImagePixels iPixels = ImageColorMap.process(iCounts);
+        //ImagePixels iPixels = ImageColorMap.process(iCounts);
 
         // 
-        ImageFile.save(filename, iPixels);
+        //ImageFile.save(filename, iPixels);
 
         //throw new NotImplementedException();
     }
+
+    //private Box2D ConvertScreenToBox2D(Box2D defaultBox)
+    //{
+
+    //}
 }
