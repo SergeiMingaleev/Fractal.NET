@@ -18,7 +18,7 @@ public abstract class BaseFractal : IFractal
     protected virtual Func<Complex, Complex, Complex> Z() =>
         (z0, c) => z0 * z0 + c;
 
-    public FractalData Generate(ImageBox? box, int? maxIterations) 
+    public virtual FractalData Generate(ImageBox? box, int? maxIterations) 
     {
         var maxIter = maxIterations ?? FractalConstants.MaxIteration;
         var imageBox = box ?? DefaultGeneratingBox;
