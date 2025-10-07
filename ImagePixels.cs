@@ -6,4 +6,5 @@
 /// </summary>
 internal class ImagePixels
 {
+    
 }
