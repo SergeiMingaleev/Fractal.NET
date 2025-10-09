@@ -1,8 +1,8 @@
-using Fractal.NET.Abstractions;
-using Fractal.NET.Entities.ColoredImages;
-using Fractal.NET.Enums;
+using Fractal.Abstractions;
+using Fractal.Entities.ColoredImages;
+using Fractal.Enums;
 
-namespace Fractal.NET.Factories;
+namespace Fractal.Factories;
 
 public class ColoredImageFactory
 {

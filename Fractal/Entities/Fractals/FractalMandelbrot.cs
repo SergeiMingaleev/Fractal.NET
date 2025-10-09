@@ -1,6 +1,6 @@
-﻿using Fractal.NET.Entities.Base;
+﻿using Fractal.Entities.Base;
 
-namespace Fractal.NET.Entities.Fractals;
+namespace Fractal.Entities.Fractals;
 
 /// <summary>
 /// TODO: дописать!

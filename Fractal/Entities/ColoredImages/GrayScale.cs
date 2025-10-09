@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Fractal.NET.Abstractions;
-using Fractal.NET.ValueObjects;
+using Fractal.Abstractions;
+using Fractal.ValueObjects;
 
-namespace Fractal.NET.Entities.ColoredImages;
+namespace Fractal.Entities.ColoredImages;
 
 public class GrayScale: IColoredImage
 {

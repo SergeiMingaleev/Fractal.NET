@@ -1,6 +1,6 @@
-﻿using Fractal.NET.ValueObjects;
+﻿using Fractal.ValueObjects;
 
-namespace Fractal.NET.Entities;
+namespace Fractal.Entities;
 
 /// <summary>
 /// TODO: дописать!

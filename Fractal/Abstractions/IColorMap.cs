@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Fractal.NET.Abstractions;
+namespace Fractal.Abstractions;
 
 public interface IColorMap
 {

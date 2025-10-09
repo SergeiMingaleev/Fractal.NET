@@ -1,6 +1,6 @@
-﻿using Fractal.NET.Entities;
+﻿using Fractal.Entities;
 
-namespace Fractal.NET.ValueObjects;
+namespace Fractal.ValueObjects;
 
 public struct BuildingFractalParamsDto
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Fractal.NET.ValueObjects;
+namespace Fractal.ValueObjects;
 
 /// <summary>
 /// TODO: дописать!

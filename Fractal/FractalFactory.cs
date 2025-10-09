@@ -1,8 +1,8 @@
-﻿using Fractal.NET.Abstractions;
-using Fractal.NET.Entities.Fractals;
+﻿using Fractal.Abstractions;
+using Fractal.Entities.Fractals;
 using System;
 
-namespace Fractal.NET;
+namespace Fractal;
 
 /// <summary>
 /// TODO: дописать!

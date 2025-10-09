@@ -1,4 +1,4 @@
-﻿namespace Fractal.NET;
+﻿namespace Fractal;
 
 public enum FractalType
 {

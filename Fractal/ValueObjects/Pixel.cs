@@ -1,4 +1,4 @@
-namespace Fractal.NET.ValueObjects;
+namespace Fractal.ValueObjects;
 
 public struct Pixel
 {
