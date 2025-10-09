@@ -9,10 +9,8 @@
 // **************************************************************************************
 
 using Fractal;
-using Fractal;
 using Fractal.Abstractions;
 using Fractal.Constants;
-using Fractal.Entities.ColoredImages;
 using Fractal.Enums;
 using Fractal.Factories;
 using Fractal.Entities.Writers;
@@ -29,7 +27,7 @@ internal class Program
 
         IColoredImage palette = ColoredImageFactory.Create(ColorImageType.Fire);
         var img = palette.Create(data);
-        PPMWriter.Save(img,"/Users/heorhibarakhouski/RiderProjects/Fractal.NET/Specs/imgF.ppm");
+        PPMWriter.Save(img,"/Users/heorhibarakhouski/RiderProjects/Fractal.NET/Specs/imgFfs.ppm");
     }
 
     //    /// <summary>
