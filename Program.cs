@@ -11,28 +11,49 @@
 using Fractal;
 using Fractal.Abstractions;
 using Fractal.Constants;
+using Fractal.Entities;
+using Fractal.Entities.Writers;
 using Fractal.Enums;
 using Fractal.Factories;
-using Fractal.Entities.Writers;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-        var fractal = FractalFactory.Generate(FractalType.Mandelbrot);
-        var data = fractal.Generate(
-            FractalConstants.MandelbrotConstants.DefaultMandelbrotImageBox,
-            FractalConstants.MaxIteration
-        );
+        // Хотелось бы использовать эти классы и как библиотеку,
+        // с простыми для доступа именами:
+        //var fractal = new FractalMandelbrot();
+        //ImageBox ibox = new ImageBox(fractal.box);
+        //int maxIter = 500;
+        //var data = fractal.Generate(ibox, maxIter);
+        //IColoredImage palette = new Fire();
+        //var img = palette.Create(data);
+        //img.Save("imgFfs.ppm");
 
-        IColoredImage palette = ColoredImageFactory.Create(ColorImageType.Fire);
+        // Сейчас namespace слишком длинный - должен быть просто Fractal?
+        //var fractal = new Fractal.Entities.Fractals.FractalMandelbrot();
+
+        // Подготовка расчетов:
+        FractalType fractalType = FractalType.Mandelbrot;
+        //ImageBox iBox = Fractal.Constants.Mandelbrot.DefaultImageBox;
+        //ImageBox iBox = Fractal.Constants.Mandelbrot.ImageBox;
+        ImageBox iBox = FractalConstants.MandelbrotConstants.DefaultMandelbrotImageBox;
+        // Default MaxIteration - видимо, должно быть свойством каждого фрактала, а не общим?
+        //int maxIter = Fractal.Constants.Mandelbrot.MaxIteration;
+        int maxIter = FractalConstants.MaxIteration;
+        ColorImageType colorType = ColorImageType.Fire;
+
+        // Сами расчты, скорее всего в цикле (zoom in/out, etc).
+        var fractal = FractalFactory.Generate(fractalType);
+        var data = fractal.Generate(iBox, maxIter);
+        // Почему интерфейс так используется? - делает реальную работу?
+        IColoredImage palette = ColoredImageFactory.Create(colorType);
         var img = palette.Create(data);
-        PPMWriter.Save(img,"/Users/heorhibarakhouski/RiderProjects/Fractal.NET/Specs/imgFfs.ppm");
+        // Вопрос: может перенести Save внутрь Image?
+        // img.Save(string filename, string format?=null)
+        PPMWriter.Save(img,"imgFfs.ppm");
     }
 
-    //    /// <summary>
-    //    /// TODO: дописать!
-    //    /// </summary>
     //public void run()
     //{
     //    // TODO: перенести все "магические" числа в Main().
