@@ -1,4 +1,4 @@
-﻿namespace Fractal.NET.ValueObjects;
+﻿namespace Fractal.ValueObjects;
 
 /// <summary>
 /// Задаёт область точек для расчётов в терминах (xMin, xMax, yMin, yMax).

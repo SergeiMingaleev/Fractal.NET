@@ -8,13 +8,14 @@
 // -- ваши предложения?
 // **************************************************************************************
 
-using Fractal.NET;
-using Fractal.NET.Abstractions;
-using Fractal.NET.Constants;
-using Fractal.NET.Entities.ColoredImages;
-using Fractal.NET.Entities.Writers;
-using Fractal.NET.Enums;
-using Fractal.NET.Factories;
+using Fractal;
+using Fractal;
+using Fractal.Abstractions;
+using Fractal.Constants;
+using Fractal.Entities.ColoredImages;
+using Fractal.Entities.Writers;
+using Fractal.Enums;
+using Fractal.Factories;
 
 internal class Program
 {

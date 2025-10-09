@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Fractal.NET.Abstractions;
-using Fractal.NET.ValueObjects;
+using Fractal.Abstractions;
+using Fractal.ValueObjects;
 
-namespace Fractal.NET.Entities.ColoredImages;
+namespace Fractal.Entities.ColoredImages;
 
-public class GrayScale: IColoredImage
+public class Fire: IColoredImage
 {
     public Image Create(FractalData value)
     {
@@ -18,10 +18,11 @@ public class GrayScale: IColoredImage
             for (int j = 0; j < counts[i].Count; j++)
             {
                 double t = (value.MaxIteration > 1) ? (double)counts[i][j] / (value.MaxIteration - 1) : 1.0;
+                t = Math.Pow(t, 0.6);
                 
-                byte r = (byte)Math.Clamp((int)Math.Round(255.0 * t), 0, 255);
-                byte g = r;
-                byte b = r;
+                byte r = (byte)Math.Round(255 * Math.Min(1.0, t * 3.0));
+                byte g = (byte)Math.Round(Math.Min(1.0, Math.Max(0.0, (t - 0.33) * 3.0)));
+                byte b = (byte)Math.Round(Math.Max(0.0, (t - 0.66) * 3.0 * 0.5));
 
                 row.Add(new Pixel(r, g, b));
             }

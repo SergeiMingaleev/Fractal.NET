@@ -1,7 +1,7 @@
-﻿using Fractal.NET.Entities;
-using Fractal.NET.ValueObjects;
+﻿using Fractal.Entities;
+using Fractal.ValueObjects;
 
-namespace Fractal.NET.Constants;
+namespace Fractal.Constants;
 
 public static class FractalConstants
 {

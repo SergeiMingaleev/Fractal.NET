@@ -1,4 +1,4 @@
-namespace Fractal.NET.Enums;
+namespace Fractal.Enums;
 
 public enum ColorImageType
 {
