@@ -33,28 +33,30 @@ public abstract class BaseFractal : IFractal
         var yStep = (computingBox.Ymax - computingBox.Ymin) / (ySize - 1);
 
         var counts = new List<List<int>>(ySize);
-
+        
         for (int yIndex = 0; yIndex < ySize; yIndex++)
         {
             var y = computingBox.Ymax - yIndex * yStep;
+            var row = new List<int>(xSize);
 
             for (int xIndex = 0; xIndex < xSize; xIndex++)
             {
                 var x = computingBox.Xmin + xIndex * xStep;
                 var c = new Complex((double)x, (double)y);
 
-                for (var i = 0; i < maxIter; i++)
-                {
-                    if (z.Magnitude > FractalConstants.MandelbrotConstants.DefaultThreshold)
-                    {
-                        counts[xIndex].Add(i);
-                    }
+                z = z0;
+                int iter = 0;
 
-                    z = Z().Invoke(z,c);
+                while (iter < maxIter && z.Magnitude <= FractalConstants.MandelbrotConstants.DefaultThreshold)
+                {
+                    z = Z().Invoke(z, c);
+                    iter++;
                 }
 
-                z = z0;
+                row.Add(iter);
             }
+
+            counts.Add(row);
         }
 
         return new FractalData()

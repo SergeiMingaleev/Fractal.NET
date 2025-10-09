@@ -9,12 +9,26 @@
 // **************************************************************************************
 
 using Fractal.NET;
+using Fractal.NET.Abstractions;
+using Fractal.NET.Constants;
+using Fractal.NET.Entities.ColoredImages;
+using Fractal.NET.Entities.Writers;
+using Fractal.NET.Enums;
+using Fractal.NET.Factories;
 
 internal class Program
 {
     static void Main(string[] args)
     {
         var fractal = FractalFactory.Generate(FractalType.Mandelbrot);
+        var data = fractal.Generate(
+            FractalConstants.MandelbrotConstants.DefaultMandelbrotImageBox,
+            FractalConstants.MaxIteration
+        );
+
+        IColoredImage palette = ColoredImageFactory.Create(ColorImageType.GrayScale);
+        var img = palette.Create(data);
+        PPMWriter.Save(img,"Youth path here");
     }
 
     //    /// <summary>
