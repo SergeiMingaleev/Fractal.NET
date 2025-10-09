@@ -13,9 +13,9 @@ using Fractal;
 using Fractal.Abstractions;
 using Fractal.Constants;
 using Fractal.Entities.ColoredImages;
-using Fractal.Entities.Writers;
 using Fractal.Enums;
 using Fractal.Factories;
+using Fractal.Entities.Writers;
 
 internal class Program
 {
@@ -27,9 +27,9 @@ internal class Program
             FractalConstants.MaxIteration
         );
 
-        IColoredImage palette = ColoredImageFactory.Create(ColorImageType.GrayScale);
+        IColoredImage palette = ColoredImageFactory.Create(ColorImageType.Fire);
         var img = palette.Create(data);
-        PPMWriter.Save(img,"Youth path here");
+        PPMWriter.Save(img,"/Users/heorhibarakhouski/RiderProjects/Fractal.NET/Specs/imgF.ppm");
     }
 
     //    /// <summary>
